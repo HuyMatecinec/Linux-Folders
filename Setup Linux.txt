@@ -1,0 +1,153 @@
+SETUP FISH SHELL
+sudo apt-get install fish=3.6.1-1~jammy
+chsh -s (command -s fish)
+echo (command -s fish) | sudo tee -a /etc/shells
+
+CÀI ĐẶT FISHER NVM LOGO_FISH
+curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
+fisher install jorgebucaran/nvm.fish
+fisher install laughedelic/fish_logo
+
+LỆNH LINUX
+sudo dpkg --list | grep -i jdk
+sudo apt-get remove --purge name_version 
+sudo apt-get autoremove
+
+CÀI ĐẶT JDK
+sudo apt-get install openjdk-11-jdk
+
+ĐẶT MẶC ĐINH NVM
+nvm ls-remote
+nvm install v16.13.0
+nvm use v16.13.0
+set --universal nvm_default_version v16.13.0
+
+CÀI ĐẶT YARN GLOBAL TRÊN MÁY
+npm install --global yarn
+
+CÀI ĐẶT FILE CÓ ĐUÔI .deb
+sudo dpkg -i microsoft-edge-stable_117.0.2045.35-1_amd64.deb
+
+CÀI ĐẶT DRIVER NVIDIA
+sudo apt install nvidia-driver-535
+
+CÀI ĐẶT BÀN PHÍM TIẾNG VIỆT CHO MÁY
+sudo add-apt-repository ppa:bamboo-engine/ibus-bamboo
+sudo apt-get update
+sudo apt-get install ibus-bamboo
+ibus restart
+
+SETUP GITHUB
+sudo apt-get install git
+sudo add-apt-repository ppa:git-core/ppa
+git config --global user.name HuyMatec
+git config --global user.email tranhoanghuy02.11.2003@gmail.com
+git config --global --list
+
+LỆNH LẤY SSH KEY
+ssh-keygen -t rsa -b 4096
+
+FIX CONTROL BRIGHTNESS Pop!_OS
+sudo kernelstub -a "acpi_backlight=native"
+
+FIX CONTROL BRIGHTNESS Ubuntu
+sudo gedit /etc/default/grub
+quiet splash pcie_aspm=force acpi_backlight=native
+sudo update-grub
+
+CÀI ĐẶT ANDROID_STUDIO
+sudo add-apt-repository ppa:maarten-fonville/android-studio
+sudo apt install android-studio -y
+
+SETUP MÔI TRƯỜNG FISH SHELL TRONG FILE config.fish
+cd .config/fish/; gedit config.fish
+
+fish_logo blue cyan green
+
+if status is-interactive
+    # Commands to run in interactive sessions can go here
+end
+
+set -gx ANDROID_HOME $HOME/Android/Sdk
+set -x PATH $PATH $ANDROID_HOME/emulator
+set -x PATH $PATH $ANDROID_HOME/platform-tools
+
+# bun
+set --export BUN_INSTALL "$HOME/.bun"
+set --export PATH $BUN_INSTALL/bin $PATH
+
+SETUP MÀU BÀN PHÍM
+git clone https://github.com/JafarAkhondali/acer-predator-turbo-and-rgb-keyboard-linux-module
+cd "acer-predator-turbo-and-rgb-keyboard-linux-module"
+chmod +x ./*.sh
+sudo ./install.sh
+
+Breath effect with Purple color(speed=4, brightness=100):
+./facer_rgb.py -m 1 -s 4 -b 100 -cR 255 -cG 0 -cB 255
+
+Neon effect(speed=3, brightness=100):
+./facer_rgb.py -m 2 -s 3 -b 100
+
+Wave effect(speed=5, brightness=100):
+./facer_rgb.py -m 3 -s 5 -b 100
+
+Shifting effect with Blue color (speed=5, brightness=100):
+./facer_rgb.py -m 4 -s 5 -b 100 -cR 0 -cB 255 -cG 0
+
+Zoom effect with Green color (speed=7, brightness=100):
+./facer_rgb.py -m 5 -s 7 -b 100 -cR 0 -cB 0 -cG 255
+
+Static waving (speed=0): ./facer_rgb.py -m 3 -s 0 -b 100
+
+Static mode coloring (zone=1 => most left zone, color=blue):
+./facer_rgb.py -m 0 -z 1 -cR 0 -cB 255 -cG 0
+
+Static mode coloring (zone=4 => most right zone, color=purple) and save it as example:
+./facer_rgb.py -m 0 -z 4 -cR 255 -cB 255 -cG 0
+
+Load the previously saved profile: ./facer_rgb.py -load example
+
+TẠO FILE Led_Start.sh ở Home sau đó thêm: 
+cd /home/tranhoanghuy2003/acer-predator-turbo-and-rgb-keyboard-linux-module
+chmod +x ./*.sh
+sudo ./install.sh
+./facer_rgb.py -m 3 -s 5 -b 100
+
+TẠO FILE led-start.service và thêm lệnh
+sudo nano /etc/systemd/system/led-start.service
+
+[Unit]
+Description=Run Led_Start.sh at startup
+
+[Service]
+ExecStart=/bin/fish /home/tranhoanghuy2003/Led_Start.sh
+Type=simple
+
+[Install]
+WantedBy=default.target
+
+TEST SERVICE COLORS KEYBOARD
+sudo systemctl enable led-start
+sudo systemctl start led-start
+
+LED KEYBOARD GITHUB CLONE 
+https://github.com/x211321/RGB-Config-Acer-gkbbl-0
+sudo dpkg -i ./RGB_Config_acer-gkbbl-0_v0.4.9_deb.deb
+
+FAN CONTROL ACER 
+https://github.com/Jebaitedneko/Acer-Nitro-5-AN515-58-EC-Control-Linux
+sudo bash nitrosense
+ENA: [w]rite to ec
+PWR: [q]uiet [d]efault [p]erformance
+FAN: [a]uto  [c]ustom  [m]ax
+DBG: [r]ead from ec
+DBG: [e]nergy data from intel_rapl
+DBG: [n]vidia-powerd restart
+
+MENU FAN OPTIONS
+Default Power with Auto Fan: sudo bash nitrosense da
+Performance Power with Max Fan: sudo bash nitrosense pm
+Performance Power with Custom Fan at 50%: sudo bash nitrosense pc 50
+
+CODE SAO LƯU EXTENSIONS BRAVE
+brass citizen shiver cream casino chest urban speed wedding improve floor humor tuition recycle dress purity siren cloth kiwi chuckle ice key sadness regular document
