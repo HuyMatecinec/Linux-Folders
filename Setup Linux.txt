@@ -1,12 +1,24 @@
 SETUP FISH SHELL
-sudo apt-get install fish=3.6.1-1~jammy
+sudo apt-get install fish
+
+Vào link để cập nhật lên v3.6.1 
+https://launchpad.net/~fish-shell/+archive/ubuntu/release-3/+files/fish_3.6.1-1~xenial_amd64.deb
+
+Đặt làm mặc định
 chsh -s (command -s fish)
-echo (command -s fish) | sudo tee -a /etc/shells
 
 CÀI ĐẶT FISHER NVM LOGO_FISH
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
 fisher install jorgebucaran/nvm.fish
 fisher install laughedelic/fish_logo
+
+SETUP FISH ICON
+fisher install IlanCosman/tide@v6
+Theo thứ tự chọn số 3 2 2 1 3 1 4 1 1 2 2 1 
+
+SETUP THEME 
+git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
+cd WhiteSur-gtk-theme/ && ls -lah && ./install.sh -t all -N glassy -s 220 && ls -lah *sh && sudo apt install gnome-tweaks
 
 LỆNH LINUX
 sudo dpkg --list | grep -i jdk
@@ -29,7 +41,8 @@ CÀI ĐẶT FILE CÓ ĐUÔI .deb
 sudo dpkg -i microsoft-edge-stable_117.0.2045.35-1_amd64.deb
 
 CÀI ĐẶT DRIVER NVIDIA
-sudo apt install nvidia-driver-535
+nvidia-smi
+sudo apt install nvidia-driver-545
 
 CÀI ĐẶT BÀN PHÍM TIẾNG VIỆT CHO MÁY
 sudo add-apt-repository ppa:bamboo-engine/ibus-bamboo
@@ -73,8 +86,12 @@ set -x PATH $PATH $ANDROID_HOME/emulator
 set -x PATH $PATH $ANDROID_HOME/platform-tools
 
 # bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+set -gx BUN_INSTALL "$HOME/.bun"
+set -gx PATH $BUN_INSTALL/bin $PATH
+
+# flutter
+set -gx FLUTTER_HOME "$HOME/flutter"
+set -gx PATH $PATH $FLUTTER_HOME/bin
 
 SETUP MÀU BÀN PHÍM
 git clone https://github.com/JafarAkhondali/acer-predator-turbo-and-rgb-keyboard-linux-module
@@ -130,12 +147,8 @@ TEST SERVICE COLORS KEYBOARD
 sudo systemctl enable led-start
 sudo systemctl start led-start
 
-LED KEYBOARD GITHUB CLONE 
-https://github.com/x211321/RGB-Config-Acer-gkbbl-0
-sudo dpkg -i ./RGB_Config_acer-gkbbl-0_v0.4.9_deb.deb
-
 FAN CONTROL ACER 
-https://github.com/Jebaitedneko/Acer-Nitro-5-AN515-58-EC-Control-Linux
+git clone https://github.com/Jebaitedneko/Acer-Nitro-5-AN515-58-EC-Control-Linux
 sudo bash nitrosense
 ENA: [w]rite to ec
 PWR: [q]uiet [d]efault [p]erformance
@@ -150,4 +163,4 @@ Performance Power with Max Fan: sudo bash nitrosense pm
 Performance Power with Custom Fan at 50%: sudo bash nitrosense pc 50
 
 CODE SAO LƯU EXTENSIONS BRAVE
-brass citizen shiver cream casino chest urban speed wedding improve floor humor tuition recycle dress purity siren cloth kiwi chuckle ice key sadness regular document
+pear reform banner happy leaf carbon gorilla circle foot cable senior this note mobile orphan couple slot cube wool what flavor lyrics auction wheat elbow

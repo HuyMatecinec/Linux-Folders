@@ -9,5 +9,9 @@ set -x PATH $PATH $ANDROID_HOME/emulator
 set -x PATH $PATH $ANDROID_HOME/platform-tools
 
 # bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
+set -gx BUN_INSTALL "$HOME/.bun"
+set -gx PATH $BUN_INSTALL/bin $PATH
+
+# flutter
+set -gx FLUTTER_HOME "$HOME/flutter"
+set -gx PATH $PATH $FLUTTER_HOME/bin
