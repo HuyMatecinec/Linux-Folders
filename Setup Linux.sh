@@ -5,25 +5,38 @@ git config --global user.name HuyMatec
 git config --global user.email tranhoanghuy02.11.2003@gmail.com
 git config --global --list
 
+LỆNH LẤY SSH KEY
+ssh-keygen -t rsa -b 4096
+cat tên đường dẫn public
+
+CÀI ĐẶT LINUX-FOLDERS
+git clone https://github.com/HuyMatec/Linux-Folders.git
+
+FIX CONTROL BRIGHTNESS Pop!_OS
+sudo kernelstub -a "acpi_backlight=native"
+
+FIX CONTROL BRIGHTNESS Ubuntu
+sudo nano /etc/default/grub
+quiet splash pcie_aspm=force acpi_backlight=native
+sudo update-grub
+
 CÀI ĐẶT BÀN PHÍM TIẾNG VIỆT CHO MÁY
 sudo add-apt-repository ppa:bamboo-engine/ibus-bamboo
 sudo apt-get update
 sudo apt-get install ibus-bamboo
 ibus restart
 
-SETUP THEME 
-git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
-cd WhiteSur-gtk-theme/ && ls -lah && ./install.sh -t all -N glassy -s 220 && ls -lah *sh && sudo apt install gnome-tweaks
-
-LỆNH LẤY SSH KEY
-ssh-keygen -t rsa -b 4096
-cat tên đường dẫn public
-
 SETUP FISH SHELL
 sudo apt-get install fish
 
 Đặt làm mặc định
 chsh -s (command -s fish)
+
+CÀI ĐẶT CURL & JDK & WATCHMAN
+sudo apt-get install curl
+sudo apt install openjdk-20-jdk
+sudo apt-get install watchman
+sudo apt update
 
 CÀI ĐẶT FISHER NVM LOGO_FISH
 curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
@@ -32,10 +45,7 @@ fisher install laughedelic/fish_logo
 
 SETUP FISH ICON
 fisher install IlanCosman/tide@v6
-Theo thứ tự chọn số 3 2 2 1 3 1 4 1 1 2 2 1 
-
-CÀI ĐẶT JDK
-sudo apt-get install openjdk-11-jdk
+Theo thứ tự chọn số 3 2 2 1 3 1 4 1 1 2 2 1
 
 ĐẶT MẶC ĐỊNH NVM
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
@@ -63,6 +73,11 @@ if status is-interactive
     # Commands to run in interactive sessions can go here
 end
 
+function pokeshell
+    cd /usr/local/bin/pokeshell
+    npm start
+end
+
 # android-studio
 set -gx ANDROID_HOME $HOME/Android/Sdk
 set -x PATH $PATH $ANDROID_HOME/emulator
@@ -76,17 +91,13 @@ set -gx PATH $BUN_INSTALL/bin $PATH
 set -gx FLUTTER_HOME "$HOME/flutter"
 set -gx PATH $PATH $FLUTTER_HOME/bin
 
-FIX CONTROL BRIGHTNESS Pop!_OS
-sudo kernelstub -a "acpi_backlight=native"
-
-FIX CONTROL BRIGHTNESS Ubuntu
-sudo gedit /etc/default/grub
-quiet splash pcie_aspm=force acpi_backlight=native
-sudo update-grub
+SETUP THEME
+git clone https://github.com/vinceliuice/WhiteSur-gtk-theme.git
+cd WhiteSur-gtk-theme/ && ls -lah && ./install.sh -t all -N glassy -s 220 && ls -lah *sh && sudo apt install gnome-tweaks
 
 LỆNH LINUX
 sudo dpkg --list | grep -i jdk
-sudo apt-get remove --purge name_version 
+sudo apt-get remove --purge name_version
 sudo apt-get autoremove
 
 CÀI ĐẶT FILE CÓ ĐUÔI .deb
@@ -154,7 +165,7 @@ Static mode coloring (zone=4 => most right zone, color=purple) and save it as ex
 
 Load the previously saved profile: ./facer_rgb.py -load example
 
-TẠO FILE Led_Start.sh ở Home sau đó thêm: 
+TẠO FILE Led_Start.sh ở Home sau đó thêm:
 cd /home/huymatec2003/Acer
 chmod +x ./*.sh
 sudo ./install.sh
@@ -176,7 +187,7 @@ sudo bash Led_Start.sh
 sudo systemctl enable led-start
 sudo systemctl start led-start
 
-FAN CONTROL ACER 
+FAN CONTROL ACER
 git clone https://github.com/Jebaitedneko/Acer-Nitro-5-AN515-58-EC-Control-Linux
 sudo bash nitrosense
 ENA: [w]rite to ec
