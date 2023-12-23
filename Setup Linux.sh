@@ -26,15 +26,30 @@ sudo apt-get update
 sudo apt-get install ibus-bamboo
 ibus restart
 
+SETUP ZSH SHELL
+sudo apt install zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+git clone https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+
+Đặt zsh làm mặc định
+chsh -s $(which zsh)
+
+SETUP MÔI TRƯỜNG ZSH SHELL TRONG FILE .zshrc
+ZSH_THEME="powerlevel10k/powerlevel10k"
+plugins=(git sudo history encode64 copypath zsh-autosuggestions zsh-syntax-highlighting)
+
+Theo thứ tự chọn y y y y 3 1 2 4 1 1 2 1 4 1 2 2 2 n 1 y 
+
 SETUP FISH SHELL
 sudo apt-get install fish
 
 Đặt làm mặc định
 chsh -s (command -s fish)
 
-CÀI ĐẶT CURL & JDK & WATCHMAN
+CÀI ĐẶT CURL & WATCHMAN
 sudo apt-get install curl
-sudo apt install openjdk-20-jdk
 sudo apt-get install watchman
 sudo apt update
 
@@ -133,59 +148,6 @@ Exec=/opt/flipper/flipper
 Terminal=false
 Type=Application
 Icon=/home/huymatec2003/.icons/Cupertino-Ventura/apps/128/flipper.png
-
-SETUP MÀU BÀN PHÍM
-git clone https://github.com/JafarAkhondali/acer-predator-turbo-and-rgb-keyboard-linux-module
-cd "acer-predator-turbo-and-rgb-keyboard-linux-module"
-chmod +x ./*.sh
-sudo ./install.sh
-
-Breath effect with Purple color(speed=4, brightness=100):
-./facer_rgb.py -m 1 -s 4 -b 100 -cR 255 -cG 0 -cB 255
-
-Neon effect(speed=3, brightness=100):
-./facer_rgb.py -m 2 -s 3 -b 100
-
-Wave effect(speed=5, brightness=100):
-./facer_rgb.py -m 3 -s 5 -b 100
-
-Shifting effect with Blue color (speed=5, brightness=100):
-./facer_rgb.py -m 4 -s 5 -b 100 -cR 0 -cB 255 -cG 0
-
-Zoom effect with Green color (speed=7, brightness=100):
-./facer_rgb.py -m 5 -s 7 -b 100 -cR 0 -cB 0 -cG 255
-
-Static waving (speed=0): ./facer_rgb.py -m 3 -s 0 -b 100
-
-Static mode coloring (zone=1 => most left zone, color=blue):
-./facer_rgb.py -m 0 -z 1 -cR 0 -cB 255 -cG 0
-
-Static mode coloring (zone=4 => most right zone, color=purple) and save it as example:
-./facer_rgb.py -m 0 -z 4 -cR 255 -cB 255 -cG 0
-
-Load the previously saved profile: ./facer_rgb.py -load example
-
-TẠO FILE Led_Start.sh ở Home sau đó thêm:
-cd /home/huymatec2003/Acer
-chmod +x ./*.sh
-sudo ./install.sh
-./facer_rgb.py -m 3 -s 5 -b 100
-
-TẠO FILE led-start.service và thêm lệnh
-sudo nano /etc/systemd/system/led-start.service
-
-[Unit]
-Description=Run Led_Start.sh at startup
-[Service]
-ExecStart=/bin/fish /home/huymatec2003/Led_Start.sh
-Type=simple
-[Install]
-WantedBy=default.target
-
-TEST SERVICE COLORS KEYBOARD
-sudo bash Led_Start.sh
-sudo systemctl enable led-start
-sudo systemctl start led-start
 
 FAN CONTROL ACER
 git clone https://github.com/Jebaitedneko/Acer-Nitro-5-AN515-58-EC-Control-Linux
